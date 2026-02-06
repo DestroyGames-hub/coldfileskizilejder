@@ -336,7 +336,7 @@
         
         <div class="flex flex-col gap-4">
             <button onclick="startGame()" class="menu-btn !bg-stone-200 !text-black !font-bold border-none hover:!bg-white hover:!scale-105 transform duration-200">Dosyayı Aç</button>
-            <button onclick="toggleSettings()" class="menu-btn">Saha Ayarları</button>
+            <button onclick="toggleSettings()" class="menu-btn">Ayarlar</button>
             <button onclick="toggleCredits()" class="menu-btn">Emeği Geçenler</button>
         </div>
 
@@ -346,7 +346,7 @@
     <!-- CREDITS MODAL -->
     <div id="creditsModal" class="hidden fixed inset-0 z-[1200] bg-black/95 flex items-center justify-center p-6" onclick="toggleCredits()">
         <div class="max-w-md w-full text-center space-y-8" onclick="event.stopPropagation()">
-            <h2 class="text-stone-500 font-['Special_Elite'] text-3xl uppercase tracking-widest">Ekipler</h2>
+            <h2 class="text-stone-500 font-['Special_Elite'] text-3xl uppercase tracking-widest">Emeği Geçenler</h2>
             <div class="space-y-4 font-mono text-xs tracking-widest text-stone-400">
                 <p><span class="text-stone-600">YAPIM:</span>Destroy Games</p>
                 <p><span class="text-stone-600">SENARYO:</span>Bora KARAAĞAÇ</p>
@@ -478,7 +478,7 @@
                 <div class="text-xs text-gray-500 font-mono">
                     <p>RAPORTÖR: BAŞKOMİSER</p>
                     <p>TARİH: <span id="currentDate"></span></p>
-                    <p>İMZA: ________________</p>
+                    <p>İMZA: @é&</p>
                 </div>
                 
                 <!-- STAMP AREA -->
@@ -487,7 +487,7 @@
 
             <!-- Retry button overlaid -->
             <div id="restartContainer" class="hidden absolute -bottom-20 left-0 w-full text-center">
-                 <button onclick="quitToMenu()" class="border border-stone-500 bg-black text-stone-400 px-8 py-3 hover:border-white hover:text-white transition-all uppercase text-xs tracking-[0.3em]">Yeni Dosya İste</button>
+                 <button onclick="quitToMenu()" class="border border-stone-500 bg-black text-stone-400 px-8 py-3 hover:border-white hover:text-white transition-all uppercase text-xs tracking-[0.3em]">Oyunu Bitir</button>
             </div>
         </div>
     </div>
@@ -536,6 +536,17 @@
             audioPool.click.currentTime = 0;
             audioPool.click.play().catch(()=>{});
         }
+
+        function exitGame() {
+            playClickSound();
+            window.close();
+            // window.close() güvenlik nedeniyle her zaman çalışmayabilir, bir mesajla destekleyelim:
+            setTimeout(() => {
+                const b = document.querySelector('button[onclick="exitGame()"]');
+                b.innerText = "Sekmeyi Kapatın";
+            }, 300);
+            
+       }
 
         applyAudioVolumes();
 
@@ -998,7 +1009,7 @@
             stampEl.classList.remove('stamp-animate'); 
             
             // Görüntüyü ekle
-            stampEl.innerHTML = `<img src="https://i.ibb.co/s9c0JFXR/Emniuyet-Genel-M-d-rl.png" alt="EGM Damgası" />`;
+            stampEl.innerHTML = `<a href="https://ibb.co/nNrDSbhb"><img src="https://i.ibb.co/tTBb54y4/Emniuyet-Genel-M-d-rl.png" alt="Emniuyet-Genel-M-d-rl" border="0" /></a>`;
             
             // Hızlı tepki için timeout düşürüldü
             setTimeout(() => {
