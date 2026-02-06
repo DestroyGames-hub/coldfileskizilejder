@@ -235,13 +235,92 @@
             display: inline-block;
             width: 10px;
             height: 20px;
-            background: #555;
+            background: #111;
             margin-left: 5px;
             animation: blink 0.8s infinite;
             vertical-align: middle;
         }
         @keyframes blink {
             50% { opacity: 0; }
+        }
+
+        /* --- YENİ RESMİ RAPOR EFEKTLERİ --- */
+        .report-paper {
+            background-color: #f4f1ea;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 3rem;
+            position: relative;
+            transform: rotate(0.5deg);
+            border: 1px solid #d4c5b0;
+            min-height: 400px;
+        }
+        
+        .report-header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            font-family: 'Special Elite', cursive;
+        }
+
+        .report-body {
+            font-family: 'Courier Prime', monospace;
+            color: #222;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* DAMGA EFEKTİ */
+        @keyframes stampSmash {
+            0% { opacity: 0; transform: scale(3) rotate(15deg); }
+            40% { opacity: 1; transform: scale(0.9) rotate(-5deg); }
+            60% { transform: scale(1.05) rotate(-5deg); }
+            100% { opacity: 0.9; transform: scale(1) rotate(-5deg); }
+        }
+
+        .final-stamp-box {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            width: 160px; /* Görsel için genişlik */
+            height: auto;
+            opacity: 0; /* Başlangıçta gizli */
+            transform: rotate(-5deg);
+            pointer-events: none;
+            mix-blend-mode: multiply; /* Mürekkep efekti */
+            z-index: 10;
+        }
+
+        .final-stamp-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .stamp-animate {
+            animation: stampSmash 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        /* EKRAN SARSINTISI */
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        
+        .shake-screen {
+            animation: shake 0.5s;
+            animation-iteration-count: 1;
         }
     </style>
 </head>
@@ -381,29 +460,34 @@
         </div>
     </div>
 
-    <!-- GAME OVER SCREEN -->
-    <div id="gameOverScreen" class="fixed inset-0 bg-black z-[3000] hidden flex flex-col items-center justify-center p-8 md:p-16">
-        <div class="max-w-4xl w-full border border-stone-900 p-8 md:p-16 bg-zinc-950/50 relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-stone-800 to-transparent"></div>
+    <!-- YENİ GAME OVER SCREEN: RESMİ RAPOR -->
+    <div id="gameOverScreen" class="fixed inset-0 bg-black z-[3000] hidden flex flex-col items-center justify-center p-4 md:p-12">
+        <div class="report-paper max-w-4xl w-full relative">
             
-            <div class="mb-12 flex justify-between items-start border-b border-stone-900 pb-8">
-                <div class="text-left">
-                    <div class="text-[10px] text-stone-600 uppercase tracking-[0.4em] mb-2">Adalet Bakanlığı</div>
-                    <div class="text-[10px] text-stone-500 font-mono">VAKA: 06-KRL-19</div>
-                </div>
-                <div class="text-right">
-                    <div id="endStatus" class="text-2xl md:text-4xl font-['Special_Elite'] tracking-widest uppercase"></div>
-                </div>
+            <div class="report-header">
+                <div class="text-[12px] text-black font-bold uppercase tracking-[0.4em] mb-2">T.C. ADALET BAKANLIĞI</div>
+                <div class="text-[10px] text-gray-600 font-mono">CİNAYET BÜRO AMİRLİĞİ | VAKA: 06-KRL-19</div>
+                <div class="text-2xl mt-4 font-bold border-t border-b border-black py-2 inline-block">VAKA KAPANIŞ RAPORU</div>
             </div>
 
-            <div class="relative min-h-[150px]">
-                <p id="endText" class="text-stone-400 text-lg md:text-xl font-['Courier_Prime'] leading-relaxed tracking-tight text-left"></p>
-                <div id="telegraphCursor" class="cursor hidden"></div>
+            <div class="report-body relative min-h-[200px] mb-12">
+                <span id="endText"></span><span id="telegraphCursor" class="cursor hidden"></span>
             </div>
 
-            <div class="mt-20 pt-8 border-t border-stone-900 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-[9px] text-stone-700 uppercase tracking-widest italic">STOP. İLETİ SONU. STOP.</div>
-                <button id="restartBtn" onclick="quitToMenu()" class="hidden border border-stone-800 text-stone-500 px-12 py-4 hover:border-stone-400 hover:text-white transition-all uppercase text-[10px] tracking-[0.3em]">Yeni Dosya İste</button>
+            <div class="flex justify-between items-end mt-8 border-t border-gray-400 pt-6">
+                <div class="text-xs text-gray-500 font-mono">
+                    <p>RAPORTÖR: BAŞKOMİSER</p>
+                    <p>TARİH: <span id="currentDate"></span></p>
+                    <p>İMZA: ________________</p>
+                </div>
+                
+                <!-- STAMP AREA -->
+                <div id="finalStamp" class="final-stamp-box"></div>
+            </div>
+
+            <!-- Retry button overlaid -->
+            <div id="restartContainer" class="hidden absolute -bottom-20 left-0 w-full text-center">
+                 <button onclick="quitToMenu()" class="border border-stone-500 bg-black text-stone-400 px-8 py-3 hover:border-white hover:text-white transition-all uppercase text-xs tracking-[0.3em]">Yeni Dosya İste</button>
             </div>
         </div>
     </div>
@@ -416,6 +500,8 @@
         const paperCrinkleSound = "https://files.catbox.moe/66nmvd.mp3"; 
         const clickSoundEffect = "https://files.catbox.moe/vtwizg.mp3";
         const telegraphLoopSound = "https://files.catbox.moe/svl419.mp3"; 
+        // Kullanılacak olan damga sesi için mevcut sesi pitch-shift ile kalınlaştıracağız
+        const stampBaseSound = "https://files.catbox.moe/vtwizg.mp3"; 
 
         const audioPool = {
             toss: [],
@@ -423,7 +509,8 @@
             close: new Audio(paperCrinkleSound),
             error: new Audio(paperCrinkleSound),
             click: new Audio(clickSoundEffect),
-            typeLoop: new Audio(telegraphLoopSound) 
+            typeLoop: new Audio(telegraphLoopSound),
+            stamp: new Audio(stampBaseSound)
         };
 
         audioPool.typeLoop.loop = true;
@@ -441,6 +528,7 @@
             audioPool.error.volume = currentGlobalVolume * 0.8;
             audioPool.click.volume = currentGlobalVolume * 0.4;
             audioPool.typeLoop.volume = currentGlobalVolume * 0.5;
+            audioPool.stamp.volume = Math.min(1.0, currentGlobalVolume * 1.5); // Boost volume
             audioPool.toss.forEach(s => s.volume = currentGlobalVolume * 0.8);
         }
 
@@ -602,7 +690,7 @@
         };
 
         let currentSuspectID = null;
-        let interrogationTimer = null; // Fix: Global timer variable
+        let interrogationTimer = null; 
 
         function startGame() {
             playClickSound();
@@ -610,6 +698,7 @@
             document.getElementById('gameHeader').classList.remove('hidden');
             document.getElementById('desk').classList.remove('opacity-0');
             document.getElementById('quitBtn').classList.remove('hidden');
+            document.getElementById('currentDate').innerText = new Date().toLocaleDateString('tr-TR');
             initDesk();
         }
 
@@ -618,7 +707,7 @@
                 const s = audioPool.toss[index % audioPool.toss.length];
                 s.currentTime = 0;
                 s.play().catch(e => console.log("Ses hatası:", e));
-            }, (index * 120) + 300); // Biraz daha hızlı fırlat
+            }, (index * 120) + 300); 
         }
 
         function initDesk() {
@@ -632,7 +721,6 @@
                 div.className = `document tossed`;
                 div.id = `doc-${doc.id}`;
                 
-                // Randomize positions slightly more for chaos
                 const randomScatterX = (Math.random() * 40) - 20;
                 const randomScatterY = (Math.random() * 40) - 20;
                 
@@ -791,7 +879,6 @@
             const textEl = document.getElementById('int-text');
             const response = interrogationDB[currentSuspectID][type];
             
-            // FIX: Clear previous interval if exists
             if (interrogationTimer) {
                 clearTimeout(interrogationTimer);
                 interrogationTimer = null;
@@ -799,16 +886,15 @@
 
             textEl.innerHTML = "";
             
-            // Simple type effect for interrogation
             let i = 0;
             const speed = 20;
             function typeWriterInt() {
                 if (i < response.length) {
                     textEl.innerHTML += response.charAt(i);
                     i++;
-                    interrogationTimer = setTimeout(typeWriterInt, speed); // Assign to global
+                    interrogationTimer = setTimeout(typeWriterInt, speed);
                 } else {
-                    interrogationTimer = null; // Clear when done
+                    interrogationTimer = null;
                 }
             }
             typeWriterInt();
@@ -880,47 +966,55 @@
             
             audioPool.typeLoop.pause();
             audioPool.typeLoop.currentTime = 0;
-
             cursor.classList.add('hidden');
-            document.getElementById('restartBtn').classList.remove('hidden');
         }
 
-        function solve(name) {
+        async function solve(name) {
             playClickSound();
             const scr = document.getElementById('gameOverScreen');
-            const st = document.getElementById('endStatus');
             document.getElementById('finalModal').classList.add('hidden');
             scr.classList.remove('hidden');
 
             let finalMessage = "";
-            let statusText = "";
-            let statusColor = "";
             
+            // Sonuçları belirle
             if(name === "YASEMİN VURAL") {
-                statusText = "ADALET YERİNİ BULDU";
-                statusColor = "#a1a1aa";
-                finalMessage = "HELAL OLSUN REİS. ŞEYTANIN BACAĞINI KIRDIN. YASEMİN, SAHTE HEYKEL ANLAŞILMASIN DİYE YÜZEYİNE ZEHRİ SÜRMÜŞTÜ. KEREM ŞARABI DÖKÜP VEDAT'IN ELDİVENLERİNİ ÇIKARTTIRINCA, YASEMİN FIRSATI GÖRDÜ VE HEYKELE DOKUNMASINI SAĞLADI. ZEHRİ DERİDEN ALAN VEDAT, 20 DAKİKA İÇİNDE GİTTİ. LEYLA'NIN TOHUMLARI SADECE BİR GÖZ BOYAMAYDI. MÜKEMMEL İŞ.";
+                finalMessage = "Yapılan soruşturma neticesinde; Maktul Vedat Korhan'ın, Yasemin Vural tarafından getirilen 'Kızıl Ejder' isimli heykelin yüzeyine sürülen Aconitum zehriyle temas ederek öldüğü tespit edilmiştir. Sanık Yasemin Vural, suçunu itiraf etmiş olup, cinayetin planlı ve taammüden işlendiği anlaşılmıştır. Dosya savcılığa sevk edilmiştir.";
             } else if(name === "LEYLA KORHAN") {
-                statusText = "YANLIŞ HEDEF";
-                statusColor = "#7f1d1d";
-                finalMessage = "KADININ ZEHİRLİ BİTKİ HOBİSİNE KANDIN. EVET TOHUMLARI ALMIŞ AMA BAHÇIVAN DAHA EKMEDİĞİNİ SÖYLEMİŞTİ. VEDAT'IN ÖLÜMÜNDEN SONRA MİRASI ALDI AMA ASIL KATİL DIŞARIDA KEYİF ÇATIYOR. BU VİCDAN AZABIYLA UYUYABİLECEK MİSİN?";
+                finalMessage = "Şüpheli Leyla Korhan'ın zehirli bitki siparişi verdiği doğru olsa da, bahçıvan ifadesi ve kriminal raporu zehrin henüz kullanılmadığını göstermektedir. Yanlış şahıs üzerine yoğunlaşılması sebebiyle asıl fail kaçmıştır. Soruşturma başarısızlıkla sonuçlanmıştır.";
             } else if(name === "KEREM SOYLU") {
-                statusText = "YETERSİZ DELİL";
-                statusColor = "#7f1d1d";
-                finalMessage = "KEREM SADECE BORÇLU BİR KUMARBAZDI. ŞARABI DÖKMESİ SAKARLIKTI, CİNAYET SİLAHI DEĞİL. ELDİVENLERİN ÇIKMASINA SEBEP OLDU AMA ZEHRİ O VERMEDİ. MASUM BİR ADAMI İÇERİ TIKTIN, KATİL İSE ELİNİ KOLUNU SALLAYARAK ÇIKTI.";
+                finalMessage = "Şüpheli Kerem Soylu'nun maktulle arbede yaşadığı sabittir, ancak bu durum cinayet fiilini oluşturmamaktadır. Kerem Soylu'nun eldivenleri çıkarttırması sadece bir tesadüftür. Yanlış tutuklama nedeniyle gerçek katil serbest kalmıştır.";
             } else if(name === "SELİM (KAHYA)") {
-                statusText = "HATALI HÜKÜM";
-                statusColor = "#7f1d1d";
-                finalMessage = "SELİM SADECE ÜÇ BEŞ GÜMÜŞ PARÇASI ÇALAN BİR HIRSIZDI. KAMERALARI KAPATMASI CİNAYET İÇİN DEĞİL, HIRSIZLIK İÇİNDİ. ŞİMDİ KATİL, SELİM'İN ÜZERİNE ATILAN SUÇLA KENDİNİ AKLADI.";
+                finalMessage = "Şüpheli Selim, hırsızlık suçunu kabul etmiş ancak cinayetle bir bağlantısı bulunamamıştır. Kamera kayıtlarının silinmesi hırsızlığı gizlemek içindir. Hatalı yargı süreci nedeniyle dosya faili meçhul olarak kalmıştır.";
             } else {
-                statusText = "DOSYA KAPANDI";
-                statusColor = "#4b5563";
-                finalMessage = "İNTİHAR MI? ADAM MİLYONERDİ, ELDİVENSİZ HİÇBİR YERE DOKUNMAZDI. NEDEN KENDİ KOLEKSİYONUNDAKİ BİR HEYKELİ ZEHİRLEYİP İNTİHAR ETSİN? KATİL SENİN BU KARARINA KADEH KALDIRIYOR ŞU AN.";
+                finalMessage = "Maktulün profili ve olay yeri incelemesi, intihar olasılığını tamamen çürütmektedir. Titizliğiyle bilinen bir şahsın, kendi koleksiyonunu zehirleyerek intihar etmesi hayatın olağan akışına aykırıdır. Dosya, savcılık tarafından eksik soruşturma gerekçesiyle iade edilmiştir.";
             }
 
-            st.innerText = statusText;
-            st.style.color = statusColor;
-            typeWriter(finalMessage, 'endText');
+            // Yazıyı yazdır
+            await typeWriter(finalMessage, 'endText');
+
+            // Damgayı bas (Yazı bittikten sonra)
+            const stampEl = document.getElementById('finalStamp');
+            stampEl.classList.remove('stamp-animate'); 
+            
+            // Görüntüyü ekle
+            stampEl.innerHTML = `<img src="https://i.ibb.co/s9c0JFXR/Emniuyet-Genel-M-d-rl.png" alt="EGM Damgası" />`;
+            
+            // Hızlı tepki için timeout düşürüldü
+            setTimeout(() => {
+                audioPool.stamp.currentTime = 0;
+                audioPool.stamp.playbackRate = 0.6; // Kalınlaştırarak tok bir ses yapıyoruz
+                audioPool.stamp.play().catch(()=>{});
+                
+                stampEl.classList.add('stamp-animate');
+                document.body.classList.add('shake-screen');
+                setTimeout(() => document.body.classList.remove('shake-screen'), 500);
+                
+                // Yeniden başlat butonunu göster
+                setTimeout(() => {
+                    document.getElementById('restartContainer').classList.remove('hidden');
+                }, 1000);
+            }, 100);
         }
 
         function closeModal() { 
