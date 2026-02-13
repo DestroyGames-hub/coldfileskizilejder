@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cold Files: Kızıl Ejder</title>
+    <title>Cold Files</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap');
@@ -426,7 +426,7 @@
 
     <!-- MAIN MENU -->
     <div id="mainMenu" class="fixed inset-0 bg-black z-[1000] flex flex-col items-center justify-center text-center p-6 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]">
-        <div class="mb-4 px-3 py-1 border border-red-900/50 text-red-900 text-[10px] tracking-[0.3em] uppercase animate-pulse">Cold Files v1.0</div>
+        <div class="mb-4 px-3 py-1 border border-red-900/50 text-red-900 text-[10px] tracking-[0.3em] uppercase animate-pulse">Şeytan Ayrıntıda Gizlidir</div>
         <h1 class="font-['Special_Elite'] text-7xl md:text-8xl text-stone-200 mb-2 tracking-tighter shadow-xl">COLD FILES</h1>
         <p class="text-stone-600 tracking-[1.5em] mb-16 uppercase text-xs md:text-sm ml-[1.5em]">Vaka: "Kızıl Ejder"</p>
         
@@ -436,7 +436,7 @@
             <button onclick="toggleCredits()" class="menu-btn">Emeği Geçenler</button>
         </div>
 
-        <div class="mt-20 text-stone-800 text-[9px] tracking-widest uppercase italic">"Şeytan Ayrıntıda Gizlidir."</div>
+        <div class="mt-20 text-stone-800 text-[9px] tracking-widest uppercase italic">"Gerçekler asla yüzeyde değildir."</div>
     </div>
 
     <!-- CREDITS MODAL -->
@@ -493,13 +493,13 @@
                 <!-- How To Play Content (Hidden by default) -->
                 <div id="howToPlayContent" class="hidden text-stone-400 text-[11px] font-mono leading-relaxed border p-4 border-stone-800 bg-black/50">
                     <strong class="text-stone-200 block mb-2">OPERASYON KILAVUZU:</strong>
-                    1. Bu vaka "Bölüm" usulü ilerler. Her delil hemen masaya konmaz.<br>
+                    1. Bu vaka "Bölüm" usulü ilerler. Toplam 10 Bölüm vardır.<br>
                     2. Mevcut dosyaları oku, çelişkileri not al.<br>
                     3. Her bölümün sonunda sağ üstteki butona basarak o bölümün kilit sorusunu cevapla.<br>
                     4. Şüphelileri sorgulamak için önce onların dosyasına ulaşman gerekir.<br>
-                    5. 5. Bölümden sonra (Final) katili tutukla.<br>
+                    5. 10. Bölümden sonra (Final) asıl suç örgütünü çökert.<br>
                     <br>
-                    <em class="text-red-900">Acele etme. Her detayı oku. Ortalama süre: 60 Dakika.</em>
+                    <em class="text-red-900">Sabırlı ol. Ortalama süre: 30 - 40 Dakika.</em>
                 </div>
 
             </div>
@@ -561,7 +561,7 @@
         <textarea id="notes" class="w-full h-[90%] bg-transparent border-none outline-none text-stone-400 font-serif leading-relaxed text-sm resize-none p-2" placeholder="Şüphelileri ve çelişkileri buraya yaz..."></textarea>
     </div>
 
-    <div id="docModal" onclick="if(event.target === this) closeModal()" class="fixed inset-0 z-[100] bg-black/95 hidden flex items-center justify-center p-4 md:p-12 cursor-pointer backdrop-blur-sm">
+    <div id="docModal" onclick="if(event.target === this) closeModal()" class="fixed inset-0 z-[100] bg-black/30 hidden flex items-center justify-center p-4 md:p-12 cursor-pointer backdrop-blur-sm">
         <div class="paper-detail max-w-3xl w-full h-auto max-h-[90vh] overflow-y-auto relative cursor-auto shadow-[0_0_100px_rgba(0,0,0,0.8)]">
             <button onclick="closeModal()" class="sticky top-0 float-right text-stone-500 border border-stone-400 px-4 py-1 text-[10px] hover:bg-red-900 hover:text-white hover:border-red-900 uppercase transition-all z-50 bg-stone-200">Kapat</button>
             <div id="modalContent" class="mt-8"></div>
@@ -624,7 +624,7 @@
         // --- STATE & AUDIO ---
         let currentGlobalVolume = 0.5;
         let currentLevel = 1; 
-        const MAX_LEVEL = 5; 
+        const MAX_LEVEL = 10; 
 
         const customTossSound = "https://files.catbox.moe/86fow3.mp3"; 
         const paperCrinkleSound = "https://files.catbox.moe/66nmvd.mp3"; 
@@ -678,8 +678,13 @@
             },
             doc10: {
                 id: 'doc10', chapter: 1, title: 'CESET İNCELEMESİ', label: 'FOTOĞRAF',
-                content: `<h1 class="text-3xl mb-6 border-b border-stone-800 pb-2">Ön Bulgular</h1><p class="text-lg">Maktulün yüzünde yoğun bir morarma ve kasılma mevcut. Ağız kenarında köpürme var. Eller pençe şeklinde kasılmış.</p><p class="mt-4 border p-4 bg-red-900/10 border-red-900"><strong>NOT:</strong> Tipik kalp krizi değil. Zehirlenme belirtileri kuvvetli.</p>`,
+                content: `<h1 class="text-3xl mb-6 border-b border-stone-800 pb-2">Ön Bulgular</h1><p class="text-lg">Maktulün yüzünde yoğun bir morarma ve kasılma mevcut. Ağız kenarında köpürme var. Eller pençe şeklinde kasılmış.</p><p class="mt-4 border p-4 bg-red-900/10 border-red-900"><strong>NOT:</strong> Tipik kalp krizi değil. Zehirli madde şüphesi. Sol el serçe parmağında eski bir yanık izi dikkat çekiyor.</p>`,
                 x: 150, y: 200, rot: 2
+            },
+            doc_extra1: {
+                id: 'doc_extra1', chapter: 1, title: 'HAVA DURUMU RAPORU', label: 'METEOROLOİ',
+                content: `<p class="font-mono text-sm">Olay gecesi İstanbul'da şiddetli lodos fırtınası hakimdi. Deniz ulaşımı 22:00 itibariyle durdurulmuştu. Yalıya denizden ulaşım imkansızdı.</p>`,
+                x: 300, y: 100, rot: 5
             },
             doc3: {
                 id: 'doc3', chapter: 2, title: 'ŞÜPHELİ: LEYLA KORHAN', label: 'EŞİ',
@@ -695,6 +700,11 @@
                 id: 'doc11', chapter: 2, title: 'KEREM\'İN CEBİNDEN ÇIKAN NOT', label: 'DELİL',
                 content: `<div class="stamp-red">EL KONULDU</div><p class="font-['Courier_Prime'] text-xl italic">"Vedat, bu işi bu gece bitirelim. Ya borcumu silersin ya da olacaklardan ben sorumlu değilim."</p><p class="text-sm mt-4 text-gray-500">Kerem'in ceketinin iç cebinde bulundu.</p>`,
                 x: 250, y: 450, rot: 10
+            },
+            doc_extra2: {
+                id: 'doc_extra2', chapter: 2, title: 'KEREM\'İN TELEFON KAYITLARI', label: 'HTS',
+                content: `<p class="font-mono">Olay saatinden hemen önce (23:10) "Bilinmeyen Numara" ile 4 dakikalık görüşme.</p><p class="mt-2 text-red-800 font-bold">Sesli Mesaj Dökümü: "Sakin ol Kerem. Plan bozulursa sen yanarsın."</p>`,
+                x: 350, y: 500, rot: -3
             },
             doc2: {
                 id: 'doc2', chapter: 3, title: 'ADLİ TIP OTOPSİSİ', label: 'TOKSİKOLOJİ',
@@ -730,6 +740,54 @@
                 id: 'doc9', chapter: 5, title: 'BAHÇIVANIN NOTU', label: 'EK BİLGİ',
                 content: `<div class="stamp-red">DİKKAT</div><p class="text-lg">"Leyla hanımın verdiği o tohumlar hala serada kilitli duruyor. Paketi açılmamış bile. Anahtar bende."</p><p class="text-sm mt-4 font-bold">SONUÇ: Leyla'nın bitkileri henüz kullanılmamış.</p>`,
                 x: 750, y: 600, rot: 1
+            },
+            
+            // --- YENİ BÖLÜMLER (EXTENDED CUT) ---
+            
+            doc13: {
+                id: 'doc13', chapter: 6, title: 'YASEMİN\'İN ÇANTASI', label: 'GİZLİ BÖLME',
+                content: `<h1 class="text-2xl mb-4 border-b pb-2">Ele Geçirilen Not</h1><p class="italic">"Heykel sadece bir araç. Asıl hedef 'Kasa 1999'. Eğer Vedat ölmezse, geçmişteki o geceyi herkese anlatırım. Seçim senin Yasemin."</p><p class="mt-4 text-red-700 font-bold">İmza Yok. Sadece siyah bir mühür var.</p>`,
+                x: 100, y: 200, rot: -10
+            },
+            doc14: {
+                id: 'doc14', chapter: 6, title: 'ESKİ GAZETE KÜPÜRÜ (1999)', label: 'ARŞİV',
+                content: `<h2 class="text-xl font-bold mb-2">KORHAN AİLESİNDE TRAJEDİ</h2><p class="font-mono text-xs">25.04.1999 - Vedat Korhan'ın babası Hikmet Korhan, şüpheli bir yangında hayatını kaybetti. Olay yerinde bulunan tek kişi, o sırada henüz stajyer olan şimdiki aile avukatı <strong>Cemil Soykan</strong>'dı.</p>`,
+                x: 400, y: 300, rot: 5
+            },
+            doc15: {
+                id: 'doc15', chapter: 7, title: 'ŞÜPHELİ: DR. NİHAT', label: 'AİLE HEKİMİ',
+                content: `<h1 class="text-3xl mb-4">Doktor Nihat</h1><p>"Vedat beyin kalp rahatsızlığı vardı. Verdiğim ilaçlar standarttı."</p><div class="bg-yellow-900/20 p-4 border border-yellow-800 mt-2"><p><strong>Çelişki:</strong> Vedat'ın kanında bulunan Aconitum zehrinin panzehiri, Dr. Nihat'ın çantasında bulundu. Neden yanında taşıyordu?</p></div>`,
+                x: 600, y: 150, rot: -5
+            },
+            doc16: {
+                id: 'doc16', chapter: 7, title: 'REÇETE DÖKÜMÜ', label: 'ECZANE',
+                content: `<p class="font-mono">Dr. Nihat, son 6 ayda yüklü miktarda "Digitalis" ve "Arsenik" bazlı bileşen sipariş etmiş. Bu maddeler Vedat'ın vücudunda yoktu.</p><p class="mt-2 font-bold">Soru: Bu zehirler kimin için hazırlandı?</p>`,
+                x: 200, y: 500, rot: 8
+            },
+            doc17: {
+                id: 'doc17', chapter: 8, title: 'ŞÜPHELİ: AVUKAT CEMİL', label: 'HUKUK',
+                content: `<div class="stamp-blue">TAKİP</div><h1 class="text-3xl mb-4">Avukat Cemil Soykan</h1><p>"Vasiyet henüz açılmadı. Vedat bey her şeyi bir hayır kurumuna bıraktığını söylemişti."</p><p class="mt-4 text-red-600"><strong>YALAN TESPİTİ:</strong> Noterdeki asıl vasiyette, tüm mirasın "Gölge" lakaplı kimliği belirsiz birine bırakıldığı yazıyor.</p>`,
+                x: 500, y: 400, rot: -2
+            },
+            doc18: {
+                id: 'doc18', chapter: 8, title: 'ŞİFRELİ E-POSTA', label: 'DİJİTAL',
+                content: `<p class="font-mono text-xs bg-black text-green-500 p-4">KİMDEN: shadow_council@xmail.com<br>KİME: c.soykan@law.com<br><br>"Emanet teslim alındı mı? Heykel işi Yasemin'in başını yakacak, plan tıkırında. Vedat'ın 1999 dosyasını yok et."</p>`,
+                x: 300, y: 600, rot: 0
+            },
+            doc19: {
+                id: 'doc19', chapter: 9, title: 'GİZLİ ODA KROKİSİ', label: 'MİMARİ',
+                content: `<div class="stamp-red">GİZLİ</div><p>Yalının bodrum katında, resmi projede görünmeyen bir oda tespit edildi. Odanın girişi sadece <strong>Kızıl Ejder</strong> heykeli doğru açıyla yerleştirildiğinde açılıyor.</p>`,
+                x: 150, y: 350, rot: 15
+            },
+            doc20: {
+                id: 'doc20', chapter: 9, title: 'ODADAN ÇIKAN GÜNLÜK', label: 'İTİRAF',
+                content: `<p class="font-handwriting text-lg italic">"Babamı ben öldürmedim. Cemil yaptı. Beni yıllarca bununla tehdit etti. Servetimi sömürdü. Şimdi de beni öldürüp her şeyi 'Gölge' dediği o örgüte aktaracak. Zehirlendiğimi biliyorum... İlaçlarımı Nihat değiştirdi..." - Vedat Korhan</p>`,
+                x: 450, y: 200, rot: -3
+            },
+            doc21: {
+                id: 'doc21', chapter: 10, title: 'SON PARÇA: SES KAYDI', label: 'KANIT',
+                content: `<p class="font-bold border-b border-white/20 mb-2">TELESEKRETER KAYDI (OLAY GÜNÜ 18:00)</p><p>"Alo Vedat? Ben Cemil. Nihat ile konuştum. İlaçların dozunu ayarladı. Bu gece her şey bitecek. Yasemin heykeli getirecek, o aptal Kerem de ortalığı karıştıracak. Sen sadece 'krizi' bekle. Rahat uyu kardeşim."</p>`,
+                x: 300, y: 300, rot: 0
             }
         };
 
@@ -738,14 +796,21 @@
             2: { title: "BÖLÜM 2: ŞÜPHELİLER", desc: "Kerem Soylu'nun cinayeti işlemesi için en güçlü motivasyonu nedir?", options: [ { txt: "Maktulün karısına aşık olması.", correct: false }, { txt: "Maktule olan yüklü borcu ve tehdit notu.", correct: true }, { txt: "Sanat eserlerini çalmak istemesi.", correct: false }, { txt: "Maktulün onu kovması.", correct: false } ] },
             3: { title: "BÖLÜM 3: ADLİ TIP", desc: "Otopsi raporuna göre zehir vücuda nasıl girmiş?", options: [ { txt: "Şarap kadehine zehir atılarak.", correct: false }, { txt: "Eldivenlerin içine iğne konularak.", correct: false }, { txt: "Zehirli bir yüzeye çıplak elle temas ederek.", correct: true }, { txt: "Yemeğine katılarak.", correct: false } ] },
             4: { title: "BÖLÜM 4: PARA TRAFİĞİ", desc: "Banka kayıtlarında Yasemin Vural ile ilgili şüpheli olan nedir?", options: [ { txt: "Yasemin maktule para göndermiş.", correct: false }, { txt: "Maktul, değersiz bir heykel için Yasemin'e servet ödemiş.", correct: true }, { txt: "Yasemin iflas etmiş.", correct: false }, { txt: "Kayıtlarda Yasemin'in adı hiç geçmiyor.", correct: false } ] },
-            5: { title: "BÖLÜM 5: BÜYÜK RESİM", desc: "Maktulün o heykeli çıplak elle tutmasını kim, nasıl sağladı?", options: [ { txt: "Leyla zorla tutuşturdu.", correct: false }, { txt: "Kerem şarabı döküp eldiveni çıkarttırdı, Yasemin heykeli verdi.", correct: true }, { txt: "Selim eldivenleri çaldı.", correct: false }, { txt: "Maktul eldiven takmayı sevmezdi.", correct: false } ] }
+            5: { title: "BÖLÜM 5: ARA DEĞERLENDİRME", desc: "Maktulün o heykeli çıplak elle tutmasını kim, nasıl sağladı?", options: [ { txt: "Leyla zorla tutuşturdu.", correct: false }, { txt: "Kerem şarabı döküp eldiveni çıkarttırdı, Yasemin heykeli verdi.", correct: true }, { txt: "Selim eldivenleri çaldı.", correct: false }, { txt: "Maktul eldiven takmayı sevmezdi.", correct: false } ] },
+            // NEW QUIZZES
+            6: { title: "BÖLÜM 6: DERİN BAĞLANTILAR", desc: "Yasemin'in çantasından çıkan not neye işaret ediyor?", options: [ { txt: "Yasemin'in kendi isteğiyle cinayeti işlediğine.", correct: false }, { txt: "Yasemin'in birileri tarafından tehdit edildiğine.", correct: true }, { txt: "Yasemin'in aslında polis olduğuna.", correct: false }, { txt: "Notun bir aşk mektubu olduğuna.", correct: false } ] },
+            7: { title: "BÖLÜM 7: DOKTORUN SIRRI", desc: "Doktor Nihat'ın çantasındaki panzehir ne anlama geliyor?", options: [ { txt: "Vedat'ı kurtarmaya çalıştı.", correct: false }, { txt: "Zehri onun hazırladığını ve ne olduğunu bildiğini gösterir.", correct: true }, { txt: "Kendisi için taşıyordu.", correct: false }, { txt: "Tesadüfen oradaydı.", correct: false } ] },
+            8: { title: "BÖLÜM 8: GEÇMİŞİN GÖLGESİ", desc: "Avukat Cemil'in asıl amacı ne?", options: [ { txt: "Vedat'ı savunmak.", correct: false }, { txt: "Mirası 'Gölge' denilen örgüte aktarmak.", correct: true }, { txt: "Leyla ile evlenmek.", correct: false }, { txt: "Kerem'in borcunu ödemek.", correct: false } ] },
+            9: { title: "BÖLÜM 9: VEDAT'IN GÜNLÜĞÜ", desc: "Vedat Korhan aslında kimi suçluyor?", options: [ { txt: "Karısı Leyla'yı.", correct: false }, { txt: "Ortağı Kerem'i.", correct: false }, { txt: "Avukat Cemil ve Doktor Nihat'ı.", correct: true }, { txt: "Hizmetçiyi.", correct: false } ] }
         };
 
         const interrogationDB = {
             "Leyla Korhan": { requiredLevel: 2, good: "Bak polis bey, kocamla aram iyi değildi ama ben katil değilim. Sadece mirasımı alıp gitmek istedim. O tohumları da stresten kurtulmak için aldım. Yemin ederim ekmedim bile!", bad: "Bağırma bana! Avukatımı arayacağım! Evet, tohumları aldım ama bahçıvana sor, hepsi kilitli dolapta duruyor. Zehir falan yapmadım ben. Kocamı o lanet heykelleri öldürdü!" },
             "Kerem Soylu": { requiredLevel: 2, good: "Abi bak, çok borcum vardı yalan yok. Vedat'la tartıştık ama ben sadece itişip kakıştım. Şarabı dökünce delirdi. Ben de korkup lavaboya kaçtım. Öldürmedim onu...", bad: "Tamam o not benim! Onu tehdit ettim çünkü beni bitirecekti. Ama yemin ederim öldürmedim. Şarabı döktüm, o kadar. Sonra o kadın geldi yanına." },
             "Yasemin Vural": { requiredLevel: 4, good: "Memur bey, sanat narin bir iştir. Vedat bey eserlerin ruhunu hissetmeyi severdi. O para mı? Sanat paha biçilemezdir, Vedat bey cömert bir adamdı.", bad: "Sesini yükseltme küçük adam. Ben uluslararası bir sanat tüccarıyım. Sahte eser mi? Hah! Benim sattığım her şey gerçektir. Vedat kendi eceliyle öldü, benimle uğraşmayı bırak." },
-            "Selim (Kahya)": { requiredLevel: 5, good: "Abi kovulmuştum, parasızdım. Sadece gümüş şamdanları alıp kaçacaktım. Kameraları o yüzden kapattım. Vedat beyi yerde yatarken gördüm ama korkup kaçtım.", bad: "Yapmadım diyorum! Hırsızım ben, katil değil! Kameraları kapattım evet ama adamı öldürmedim. Ben şamdanları çantaya atarken o kadın, Leyla hanım mutfakta eldiven yıkıyordu." }
+            "Selim (Kahya)": { requiredLevel: 5, good: "Abi kovulmuştum, parasızdım. Sadece gümüş şamdanları alıp kaçacaktım. Kameraları o yüzden kapattım. Vedat beyi yerde yatarken gördüm ama korkup kaçtım.", bad: "Yapmadım diyorum! Hırsızım ben, katil değil! Kameraları kapattım evet ama adamı öldürmedim. Ben şamdanları çantaya atarken o kadın, Leyla hanım mutfakta eldiven yıkıyordu." },
+            "Dr. Nihat": { requiredLevel: 6, good: "Ben sadece doktorum memur bey. Reçeteler hastamın ihtiyacına göredir. Panzehir mi? Her ihtimale karşı taşırım, Vedat bey riskli bir hayat yaşıyordu.", bad: "Beni reçetelerle korkutamazsın! Vedat benim hastamdı ama aynı zamanda... Neyse. O gece oradaydım çünkü beni aradı. Kendini iyi hissetmiyordu. Yetişemedim." },
+            "Avukat Cemil": { requiredLevel: 8, good: "Hukuk büromuzun kayıtları gizlidir. Müvekkilim Vedat Bey trajik bir şekilde öldü. Vasiyet işleri prosedüre uygundur. Başka sorunuz?", bad: "Dikkatli konuş memur efendi. 1999 dosyası kapandı. O yangın bir kazaydı. Vedat da babası gibi dikkatsizdi. 'Gölge' mi? Öyle birini tanımıyorum. Bu bir hayal ürünü." }
         };
 
         let currentSuspectID = null;
@@ -763,15 +828,25 @@
 
         function loadLevel(level) {
             currentLevel = level;
-            const titles = ["", "OLAY YERİ", "ŞÜPHELİ AİLE", "ADLİ TIP", "GİZLİ KASA", "SON PARÇALAR"];
+            const titles = [
+                "", "OLAY YERİ", "ŞÜPHELİ AİLE", "ADLİ TIP", "GİZLİ KASA", "SON PARÇALAR",
+                "DERİN BAĞLANTILAR", "DOKTORUN SIRRI", "GEÇMİŞİN GÖLGESİ", "VEDAT'IN GÜNLÜĞÜ", "BÜYÜK FİNAL"
+            ];
             document.getElementById('headerPhaseInfo').innerText = `BÖLÜM ${level}: ${titles[level] || 'FİNAL'}`;
             const n = document.getElementById('levelNotify');
             const t = document.getElementById('lvlTitle');
             const d = document.getElementById('lvlDesc');
-            t.innerText = level > 5 ? "FİNAL DOSYASI" : `BÖLÜM ${level}`;
-            d.innerText = level > 5 ? "Katili tutuklama emri bekleniyor..." : "Masaya yeni dosyalar düştü dedektif...";
+            
+            if (level > 10) {
+                 t.innerText = "FİNAL DOSYASI";
+                 d.innerText = "Operasyon Emri Bekleniyor...";
+            } else {
+                 t.innerText = `BÖLÜM ${level}`;
+                 d.innerText = "Masaya yeni dosyalar düştü dedektif...";
+            }
+            
             n.style.display = 'block';
-            if(level <= 5) spawnChapterDocs(level);
+            if(level <= 10) spawnChapterDocs(level);
         }
 
         function closeLevelNotify() { playClickSound(); document.getElementById('levelNotify').style.display = 'none'; }
@@ -855,8 +930,8 @@
             if(allInspected) {
                 b.classList.remove('bg-stone-900', 'text-stone-800', 'cursor-not-allowed', 'border-stone-800');
                 b.classList.add('bg-stone-200', 'text-black', 'cursor-pointer', 'border-white', 'animate-pulse');
-                if (currentLevel <= 5) b.innerText = `Bölümü Bitir (${currentLevel}/5)`;
-                else b.innerText = "Hükmü Ver";
+                if (currentLevel <= 9) b.innerText = `Bölümü Bitir (${currentLevel}/10)`;
+                else b.innerText = "HÜKMÜ VER";
             }
         }
 
@@ -900,7 +975,7 @@
                 const m = document.getElementById('msgBox'); m.style.display = 'block'; setTimeout(() => m.style.display = 'none', 3000);
                 return;
             }
-            if (currentLevel <= 5) showChapterQuiz(currentLevel);
+            if (currentLevel <= 9) showChapterQuiz(currentLevel);
             else showFinalAccusation();
         }
 
@@ -919,8 +994,16 @@
 
         function showFinalAccusation() {
             const l = document.getElementById('choiceList'); const title = document.getElementById('choiceTitle'); const desc = document.getElementById('choiceDesc');
-            title.innerText = "SON KARAR TUTANAĞI"; desc.innerText = "Hatalı tutuklama soruşturmanın yanmasına sebep olur.";
-            const s = [{n: "LEYLA KORHAN", d: "EŞİ (Zehirli Bitkiler)"}, {n: "KEREM SOYLU", d: "ORTAK (Tehdit Notu & Borç)"}, {n: "YASEMİN VURAL", d: "TÜCCAR (Şüpheli Para Trafiği)"}, {n: "SELİM (KAHYA)", d: "PERSONEL (Kamera Kayıtları)"}, {n: "İNTİHAR", d: "KENDİNİ ZEHİRLEDİ"}];
+            title.innerText = "SON KARAR TUTANAĞI"; desc.innerText = "Yanlış karar tüm çabayı boşa çıkarır. Büyük resmi gör.";
+            
+            const s = [
+                {n: "LEYLA & KEREM", d: "Aşk Cinayeti"}, 
+                {n: "YASEMİN VURAL", d: "Tek Başına"}, 
+                {n: "DR. NİHAT", d: "Tıbbi Hata / İhmal"},
+                {n: "AVUKAT CEMİL & DR. NİHAT", d: "Örgütlü Suç"},
+                {n: "SELİM (KAHYA)", d: "Hırsızlık Süsü Verilmiş Cinayet"}
+            ];
+            
             l.innerHTML = s.map(x => `<button onclick="solve('${x.n}')" class="w-full p-5 border border-white/5 bg-white/5 hover:border-red-900 hover:bg-red-900/20 text-left transition-all group"><div class="text-stone-300 text-sm uppercase tracking-[0.2em] font-bold group-hover:text-white">${x.n}</div><div class="text-[9px] text-stone-500 uppercase mt-1 tracking-widest group-hover:text-stone-300">${x.d}</div></button>`).join('');
             document.getElementById('choiceModal').classList.remove('hidden');
         }
@@ -936,7 +1019,10 @@
 
         async function solve(name) {
             playClickSound(); const scr = document.getElementById('gameOverScreen'); document.getElementById('choiceModal').classList.add('hidden'); scr.classList.remove('hidden');
-            let finalMessage = (name === "YASEMİN VURAL") ? "Yapılan soruşturma neticesinde; Maktul Vedat Korhan'ın, Yasemin Vural tarafından getirilen 'Kızıl Ejder' isimli heykelin yüzeyine sürülen Aconitum zehriyle temas ederek öldüğü tespit edilmiştir. Sanık Yasemin Vural, suçunu itiraf etmiş olup, cinayetin planlı ve taammüden işlendiği anlaşılmıştır. Dosya savcılığa sevk edilmiştir." : "BAŞARISIZ. Yanlış şahıs üzerine yoğunlaşılması sebebiyle asıl fail kaçmıştır.";
+            let finalMessage = (name === "AVUKAT CEMİL & DR. NİHAT") ? 
+                "Yürütülen titiz ve kapsamlı soruşturma neticesinde, birincil şüpheli Avukat Cemil Soykan yurt dışına firar teşebbüsü esnasında kolluk kuvvetlerince derdest edilmiştir. Gözaltına alınan Dr. Nihat; maktul Vedat Korhan’ın ilaçlarını sistematik bir biçimde değiştirdiğini ve süreci şüpheli Cemil Soykan’ın talimatları doğrultusunda yönettiğini itiraf etmiştir. Operasyon dahilinde 'Gölge' yapılanması tamamen tasfiye edilmiş, söz konusu suç örgütüyle bağlantılı 1999 tarihli Hikmet Korhan dosyası yeniden incelemeye alınmıştır. Adli süreç tamamlanmış olup adalet tesis edilmiştir." : 
+                "Söz konusu soruşturma, delil toplama ve derinleştirme safhalarında yüzeysel kalmış; tahkikat yalnızca Yasemin Vural ve Kerem Soylu gibi alt düzey iştirakçilerle sınırlı tutulmuştur. Suç organizasyonunun asıl yönetici kadrosunun firarına engel olunamamış, Vedat Korhan’a ait mirasın 'Gölge' yapılanmasına aktarımı önlenememiştir. Somut delil yetersizliği ve asıl faillere ulaşılamaması nedeniyle ilgili dosya, 'faili meçhul' statüsünde arşive kaldırılmıştır.";
+            
             await typeWriter(finalMessage, 'endText');
             const stampEl = document.getElementById('finalStamp'); stampEl.classList.remove('stamp-animate'); 
             stampEl.innerHTML = `<img src="https://i.ibb.co/tTBb54y4/Emniuyet-Genel-M-d-rl.png" alt="Emniyet Damgası" />`;
@@ -951,7 +1037,7 @@
         const creditsData = `COLD FILES
 A game by Destroy Games
 
-Developer
+Developer & Scenario
 Destroy Games
 
 Publisher
@@ -1014,33 +1100,36 @@ Doğru soruları soranlar
 
 Disclaimer
 
-Bu bir kurgu eseridir. Gerçek kişilerle, yaşayan veya ölü, veya gerçek olaylarla herhangi bir benzerlik tamamen tesadüftür. Oyunun yapılış amacı gerçek hayattaki adaletsizlik sorunu ile savaşmaktır. Birleşmiş Milletler (BM), Birleşmiş Milletler Kalkınma Programı (UNDP), Dünya Bankası, Dünya Sağlık Örgütü (WHO), Uluslararası Çalışma Örgütü (ILO) ve benzeri uluslararası kuruluşlar tarafından yayımlanan küresel raporlar; gelir ve servet dağılımı, açlık ve yoksulluk oranları, temel insan haklarına erişim, cezasızlık olgusu, sosyal dışlanma, fırsat eşitsizliği ve adalet sistemlerinin işleyişine ilişkin veriler birlikte değerlendirildiğinde, dünya genelinde adaletsizlikten doğrudan veya dolaylı olarak etkilenen nüfus oranının yaklaşık %50–%60 aralığında olduğunu göstermektedir. Bu değerlendirme; adaletsizliği yalnızca hukuki süreçlerde yaşanan hatalarla sınırlı görmemekte, aynı zamanda ağır suçların cezasız kalması, masum bireylerin korunamaması, temel yaşam hakkı kapsamında değerlendirilen yeterli beslenme, barınma, sağlık ve eğitime erişimdeki eşitsizlikler ile yapısal yoksulluk ve ayrımcılık gibi çok boyutlu sorunları da kapsamaktadır. Uluslararası insan hakları belgelerinde açıkça vurgulandığı üzere, bu unsurlar bireyin onurunu, güvenliğini ve yaşam hakkını doğrudan etkileyen temel adalet göstergeleri arasında yer almaktadır. Söz konusu veriler, adaletsizliğin münferit olaylardan ibaret olmadığını; aksine ekonomik, sosyal, politik ve hukuki yapılarla iç içe geçmiş, küresel ölçekte süreklilik gösteren sistemik bir sorun olduğunu ortaya koymaktadır. Bu bağlamda adaletsizlik, yalnızca bireysel mağduriyetler üzerinden değil, toplumların tamamının refahını, barışını ve sürdürülebilir geleceğini tehdit eden yapısal bir insan hakları ihlali olarak ele alınmaktadır. Bu eser, evrensel insan hakları ilkeleri doğrultusunda; adalet, eşitlik, insan onuru ve yaşam hakkı kavramlarına dikkat çekmeyi, görünmez kılınan mağduriyetleri görünür hale getirmeyi ve küresel ölçekte süregelen adaletsizliklere karşı farkındalık oluşturmayı amaçlamaktadır.
-`;
+Bu bir kurgu eseridir. Gerçek kişilerle, yaşayan veya ölü ya da gerçek olaylarla herhangi bir benzerlik tamamen tesadüftür. Oyunun amacı gerçek hayattaki adaletsizlikle mücadele etmektir. Birleşmiş Milletler (BM), Birleşmiş Milletler Kalkınma Programı (UNDP), Dünya Bankası, Dünya Sağlık Örgütü (WHO), Uluslararası Çalışma Örgütü (ILO) ve benzeri kuruluşların raporlarına göre; yoksulluk, açlık, eşitsizlik, hukuki temsil eksikliği ve cezasızlık dikkate alındığında dünya nüfusunun yaklaşık %50–%60’ının adaletsizlikten etkilendiği değerlendirilmektedir.`;
 
         function buildCredits() {
             const container = document.getElementById('dynamicCredits');
             const lines = creditsData.split('\n');
             let html = "";
-            let currentSection = "";
+            let isSectionStart = true;
+            let hasOpenSection = false;
 
             lines.forEach(line => {
                 const trimmed = line.trim();
-                if (!trimmed) return;
+                if (!trimmed) {
+                    isSectionStart = true;
+                    return;
+                }
 
-                // Check if it's a section title or desc or name
-                // Basic logic: if line after empty is short/uppercase might be title
-                // For simplicity, we wrap lines based on simple rules:
-                if (trimmed === trimmed.toUpperCase() && trimmed.length > 5 && !trimmed.includes('BY')) {
+                if (isSectionStart) {
+                    if (hasOpenSection) html += "</div>";
                     html += `<div class="credits-section"><div class="credits-title">${trimmed}</div>`;
-                } else if (trimmed.startsWith('A game by') || trimmed.includes('–')) {
-                    html += `<div class="credits-name">${trimmed}</div>`;
-                } else if (trimmed.length > 30 || trimmed.includes(' ')) {
-                    // Likely a description or disclaimer
-                    html += `<div class="credits-desc">${trimmed}</div>`;
+                    hasOpenSection = true;
+                    isSectionStart = false;
                 } else {
-                    html += `<div class="credits-name">${trimmed}</div>`;
+                    if (trimmed.length > 30 || trimmed.includes('Oyunun') || trimmed.includes('Seslerin')) {
+                        html += `<div class="credits-desc">${trimmed}</div>`;
+                    } else {
+                        html += `<div class="credits-name">${trimmed}</div>`;
+                    }
                 }
             });
+            if (hasOpenSection) html += "</div>";
             container.innerHTML = html;
         }
 
@@ -1052,24 +1141,24 @@ Bu bir kurgu eseridir. Gerçek kişilerle, yaşayan veya ölü, veya gerçek ola
             overlay.style.display = 'flex';
             
             audioPool.creditsTheme.play().then(() => {
-                const duration = audioPool.creditsTheme.duration;
                 const scrollHeight = content.offsetHeight + window.innerHeight;
                 
-                // Animation logic: scroll from top: 100% to top: -scrollHeight
+                // Fixed duration: 1 minute 50 seconds (110000 ms)
                 content.animate([
                     { top: '100%' },
                     { top: `-${content.offsetHeight}px` }
                 ], {
-                    duration: duration * 1000,
+                    duration: 160000, 
                     easing: 'linear',
                     fill: 'forwards'
                 });
 
+                // Since duration is fixed, we set audio behavior to match or handle ending separately
+                // We keep the music playing, if it's shorter/longer it doesn't break the visual timing
                 audioPool.creditsTheme.onended = () => {
                     location.reload();
                 };
             }).catch(e => {
-                // Fallback if audio fails
                 console.error("Audio error", e);
                 location.reload();
             });
